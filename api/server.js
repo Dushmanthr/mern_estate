@@ -19,4 +19,4 @@ app.listen(5000, ()=> {
 
 //app routers
 
-app.use('api/user', userRouter)
+app.use('/api/user', userRouter)
