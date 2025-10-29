@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {useState} from 'react'
 import axios from 'axios'
+import OAuth from '../components/OAuth'
 
 export default function SignUp() {
   const [formData, setFormData] = useState({})
@@ -50,6 +51,7 @@ console.error('Signup failed:', error.response?.data || error.message);
         <input type="email" placeholder="email" className="border p-3 rounded-lg" id="email" onChange={handleChange}/>
         <input type="password" placeholder="password" className="border p-3 rounded-lg" id="password" onChange={handleChange}/>
         <button disabled={loading} className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-90 disabled:opacity-80 cursor-pointer'>{loading ? 'Loading...' : 'Sign Up'}</button>
+        <OAuth/>
       </form>
       <div className= "flex gap-2 mt-5">
         <p>Have an account?</p>
