@@ -1,8 +1,10 @@
 import React from 'react'
 import { BiSearch } from "react-icons/bi";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export default function Header() {
+  const {currentUser} = useSelector((state) => state.user);
   return (
     <header className="bg-slate-200 shadow-md">
         <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
@@ -23,8 +25,12 @@ export default function Header() {
           <Link to = '/about'>
           <li className='hidden sm:inline text-slate-700 hover:text-blue-900'>About</li>
           </Link>
-          <Link to = '/signin'>
-          <li className='hidden sm:inline text-slate-700 hover:text-blue-900'>Signin</li>
+          <Link to = '/profile'>
+          {currentUser ? (
+            <img src={currentUser.avatar} alt={currentUser.name} className="w-8 h-8 rounded-full object-cover"/>
+          ): ( <li className='hidden sm:inline text-slate-700 hover:text-blue-900'>Signin</li>
+        )}
+          
           </Link>
         </ul> 
         </div>
